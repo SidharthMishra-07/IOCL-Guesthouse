@@ -22,7 +22,7 @@ mongoose.connection.on("disconnected", () => {
     console.log("mongoDB disconnected!");
 });
 
-//middleware
+//Middlewares
 app.use(express.json());
 
 app.use("/api/auth", authRoute)
@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
       message: errorMessage,
       stack: err.stack,
     });
-  });
+});
 
 app.listen(8800, () => {
     connect();

@@ -1,3 +1,5 @@
+import e from "express";
+
 export const createGuesthouse = async (req, res) => {
     const newGuesthouse = new Guesthouse(req.body);
     try {
@@ -27,6 +29,14 @@ export const getGuesthouse = async (req, res) => {
     try{
         const guesthouse = await Guesthouse.findById(req.params.id);
         res.status(200).json(guesthouse);
+    } catch(err) {
+        next(err);
+    }
+}
+export const getAllGuesthouse = async (req, res) => {
+    try{
+        const guesthouses = await Guesthouse.find();
+        res.status(200).json(guesthouses);
     } catch(err) {
         next(err);
     }

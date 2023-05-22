@@ -1,6 +1,6 @@
 import express from "express";
 import Guesthouse from "../models/Guest.js";
-import { createGuesthouse, deleteGuesthouse, getGuesthouse, updateGuesthouse } from "../controllers/guesthouse_Controller.js";
+import { createGuesthouse, deleteGuesthouse, getAllGuesthouse, getGuesthouse, updateGuesthouse } from "../controllers/guesthouse_Controller.js";
 
 const router = express.Router();
 
@@ -17,13 +17,6 @@ router.delete("/:id", deleteGuesthouse);
 router.get("/:id", getGuesthouse);
 
 //get all
-router.get("/", async(req, res, next)=>{
-    try{
-        const guesthouses = await Guesthouse.find();
-        res.status(200).json(guesthouses);
-    } catch(err) {
-        next(err);
-    }
-});
+router.get("/", getAllGuesthouse);
 
 export default router

@@ -1,45 +1,21 @@
 import express from "express";
 import Guesthouse from "../models/Guest.js";
+import { createGuesthouse, deleteGuesthouse, getGuesthouse, updateGuesthouse } from "../controllers/guesthouse_Controller.js";
 
 const router = express.Router();
 
 //create
-router.post("/", async (req, res) => {
-    const newGuesthouse = new Guesthouse(req.body);
-    try {
-        const savedGuesthouse = await newGuesthouse.save();
-        res.status(200).json(savedGuesthouse);
-    } catch(err) {
-        res.status(500).json(err);
-    }
-});
+router.post("/", createGuesthouse);
+
 //update
-router.put("/:id", async (req, res) => {
-    try {
-        const updatedGuesthouse = await Guesthouse.findByIdAndUpdate(req.params.id,{ $set: req.body}, {new: true});
-        res.status(200).json(updatedGuesthouse);
-    } catch(err) {
-        res.status(500).json(err);
-    }
-});
+router.put("/:id", updateGuesthouse);
+
 //delete
-router.delete("/:id", async(req, res)=>{
-    try{
-        await Guesthouse.findByIdAndDelete(req.params.id);
-        res.status(200).json("Guesthouse has been deleted...");
-    } catch(err) {
-        res.status(500).json(err);
-    }
-});
+router.delete("/:id", deleteGuesthouse);
+
 //get
-router.get("/:id", async(req, res)=>{
-    try{
-        const guesthouse = await Guesthouse.findById(req.params.id);
-        res.status(200).json(guesthouse);
-    } catch(err) {
-        res.status(500).json(err);
-    }
-});
+router.get("/:id", getGuesthouse);
+
 //get all
 router.get("/", async(req, res, next)=>{
     try{

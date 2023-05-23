@@ -1,6 +1,6 @@
 import express from "express";
 import Guesthouse from "../models/Guest.js";
-import { createGuesthouse, deleteGuesthouse, getAllGuesthouse, getGuesthouse, updateGuesthouse } from "../controllers/guesthouse_Controller.js";
+import { createGuesthouse, deleteGuesthouse, getAllGuesthouse, getGuesthouse, updateGuesthouse } from "../controllers/guesthouse_controller.js";
 
 const router = express.Router();
 

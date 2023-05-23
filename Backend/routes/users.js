@@ -1,5 +1,5 @@
 import express from "express";
-import { deleteUser, getAllUsers, getUser, updateUser } from "../controllers/user_Controller.js";
+import { deleteUser, getAllUsers, getUser, updateUser } from "../controllers/user_controller.js";
 
 const router = express.Router();
 
@@ -15,4 +15,4 @@ router.get("/:id", getUser);
 //get all
 router.get("/", getAllUsers);
 
-export default router
+export default router;

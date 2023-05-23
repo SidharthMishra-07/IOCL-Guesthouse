@@ -1,6 +1,6 @@
-import e from "express";
+import Guesthouse from "../models/Guest.js";
 
-export const createGuesthouse = async (req, res) => {
+export const createGuesthouse = async (req, res, next) => {
     const newGuesthouse = new Guesthouse(req.body);
     try {
         const savedGuesthouse = await newGuesthouse.save();
@@ -9,7 +9,7 @@ export const createGuesthouse = async (req, res) => {
         next(err);
     }
 }
-export const updateGuesthouse = async (req, res) => {
+export const updateGuesthouse = async (req, res, next) => {
     try {
         const updatedGuesthouse = await Guesthouse.findByIdAndUpdate(req.params.id,{ $set: req.body}, {new: true});
         res.status(200).json(updatedGuesthouse);
@@ -17,7 +17,7 @@ export const updateGuesthouse = async (req, res) => {
         next(err);
     }
 }
-export const deleteGuesthouse = async (req, res) => {
+export const deleteGuesthouse = async (req, res, next) => {
     try{
         await Guesthouse.findByIdAndDelete(req.params.id);
         res.status(200).json("Guesthouse has been deleted...");
@@ -25,7 +25,7 @@ export const deleteGuesthouse = async (req, res) => {
         next(err);
     }
 }
-export const getGuesthouse = async (req, res) => {
+export const getGuesthouse = async (req, res, next) => {
     try{
         const guesthouse = await Guesthouse.findById(req.params.id);
         res.status(200).json(guesthouse);
@@ -33,7 +33,7 @@ export const getGuesthouse = async (req, res) => {
         next(err);
     }
 }
-export const getAllGuesthouse = async (req, res) => {
+export const getAllGuesthouse = async (req, res, next) => {
     try{
         const guesthouses = await Guesthouse.find();
         res.status(200).json(guesthouses);

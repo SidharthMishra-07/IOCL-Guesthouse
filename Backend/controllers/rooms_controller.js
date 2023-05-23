@@ -20,18 +20,30 @@ export const createRoom = async (req, res, next) => {
 
 export const updateRoom = async (req, res, next) => {
     try {
-        const updatedRoom = await Room.findByIdAndUpdate(req.params.id,{ $set: req.body}, {new: true});
+        const updatedRoom = await Room.findByIdAndUpdate(
+          req.params.id,
+          { $set: req.body },
+          { new: true }
+        );
         res.status(200).json(updatedRoom);
-    } catch(err) {
+      } catch (err) {
         next(err);
-    }
+      }
 };   
 
 export const deleteRoom = async (req, res, next) => {
-    try{
+    const guestId = req.params.guestId;
+    try {
         await Room.findByIdAndDelete(req.params.id);
-        res.status(200).json("Room has been deleted...");
-    } catch(err) {
+        try {
+        await Guest.findByIdAndUpdate(guestId, {
+            $pull: { rooms: req.params.id },
+        });
+        } catch (err) {
+        next(err);
+        }
+        res.status(200).json("Room has been deleted.");
+    } catch (err) {
         next(err);
     }
 };

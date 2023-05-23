@@ -10,7 +10,7 @@ router.post("/:guestId", verifyAdmin, createRoom);
 router.put("/:id", verifyAdmin, updateRoom);
 
 //Delete
-router.delete("/:id", verifyAdmin, deleteRoom);
+router.delete("/:id/:guestId", verifyAdmin, deleteRoom);
 
 //Get
 router.get("/:id", verifyAdmin, getRoom);

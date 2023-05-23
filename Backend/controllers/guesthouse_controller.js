@@ -1,4 +1,5 @@
 import Guesthouse from "../models/Guest.js";
+import Room from "../models/Room.js";
 
 export const createGuesthouse = async (req, res, next) => {
     const newGuesthouse = new Guesthouse(req.body);
@@ -41,3 +42,48 @@ export const getAllGuesthouse = async (req, res, next) => {
         next(err);
     }
 }
+export const countByCity = async (req, res, next) => {
+    const cities = req.query.cities.split(",");
+    try {
+      const list = await Promise.all(
+        cities.map((city) => {
+          return Guesthouse.countDocuments({ city: city });
+        })
+      );
+      res.status(200).json(list);
+    } catch (err) {
+      next(err);
+    }
+};
+
+export const countByType = async (req, res, next) => {
+    try {
+      const apartmentCount = await Guesthouse.countDocuments({ type: "apartment" });
+      const resortCount = await Guesthouse.countDocuments({ type: "resort" });
+      const villaCount = await Guesthouse.countDocuments({ type: "villa" });
+      const cabinCount = await Guesthouse.countDocuments({ type: "cabin" });
+  
+      res.status(200).json([
+        { type: "apartments", count: apartmentCount },
+        { type: "resorts", count: resortCount },
+        { type: "villas", count: villaCount },
+        { type: "cabins", count: cabinCount },
+      ]);
+    } catch (err) {
+      next(err);
+    }
+};
+
+export const getGuestRooms = async (req, res, next) => {
+    try {
+      const guesth = await Guesthouse.findById(req.params.id);
+      const list = await Promise.all(
+        guesth.rooms.map((room) => {
+          return Room.findById(room);
+        })
+      );
+      res.status(200).json(list)
+    } catch (err) {
+      next(err);
+    }
+};

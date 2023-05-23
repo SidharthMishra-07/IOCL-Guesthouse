@@ -1,6 +1,6 @@
 import express from "express";
 import Guesthouse from "../models/Guest.js";
-import { createGuesthouse, deleteGuesthouse, getAllGuesthouse, getGuesthouse, updateGuesthouse } from "../controllers/guesthouse_controller.js";
+import { countByCity, countByType, createGuesthouse, deleteGuesthouse, getAllGuesthouse, getGuestRooms, getGuesthouse, updateGuesthouse } from "../controllers/guesthouse_controller.js";
 import {verifyAdmin} from "../utils/verifyToken.js"
 
 const router = express.Router();
@@ -15,9 +15,13 @@ router.put("/:id", verifyAdmin, updateGuesthouse);
 router.delete("/:id", verifyAdmin, deleteGuesthouse);
 
 //get
-router.get("/:id", getGuesthouse);
+router.get("/find/:id", getGuesthouse);
 
 //get all
 router.get("/", getAllGuesthouse);
+
+router.get("/countByCity", countByCity);
+router.get("/countByType", countByType);
+router.get("/room/:id", getGuestRooms);
 
 export default router

@@ -1,6 +1,7 @@
 .navbar{
-  height: 50px;
-  background-color: #003580;
+  height: 100px;
+  /* background-color: #003580; */
+  background-color: white;
   display: flex;
   justify-content: center;
 }
@@ -24,4 +25,9 @@
   padding: 5px 10px;
   cursor: pointer;
   color: #003580;
+}
+@media screen and (max-width: 900px) {
+  img {
+    width: 190px;
+  }
 }

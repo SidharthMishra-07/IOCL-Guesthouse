@@ -28,3 +28,11 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+/* Make mailList responsive */
+@media screen and (max-width: 924px) {
+  .mail{
+    width: 100%;
+    padding: 20px;
+  }
+}

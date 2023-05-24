@@ -36,7 +36,7 @@ export const getGuesthouse = async (req, res, next) => {
 }
 export const getAllGuesthouse = async (req, res, next) => {
     try{
-        const guesthouses = await Guesthouse.find();
+        const guesthouses = await Guesthouse.find(req.query).limit(req.query.limit);
         res.status(200).json(guesthouses);
     } catch(err) {
         next(err);

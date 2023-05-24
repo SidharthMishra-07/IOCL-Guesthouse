@@ -5,13 +5,11 @@ const PropertyList = () => {
   const {data, loading, error} = useFetch("/guesthouse/countByType");
   console.log(data);
   const images = [
-    "https://cf.bstatic.com/xdata/images/xphoto/square300/57584488.webp?k=bf724e4e9b9b75480bbe7fc675460a089ba6414fe4693b83ea3fdd8e938832a6&o=",
-    "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-apartments_300/9f60235dc09a3ac3f0a93adbc901c61ecd1ce72e.jpg",
-    "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/bg_resorts/6f87c6143fbd51a0bb5d15ca3b9cf84211ab0884.jpg",
-    "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-villas_300/dd0d7f8202676306a661aa4f0cf1ffab31286211.jpg",
-    "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-chalet_300/8ee014fcc493cb3334e25893a1dee8c6d36ed0ba.jpg",
+    "https://content.jdmagicbox.com/comp/delhi/n8/011pxx11.xx11.000460266758.z8n8/catalogue/indian-oil-corporation-guest-house-safdarjung-development-area-delhi-hotels-38ipd5w-250.jpg",
+    "https://content.jdmagicbox.com/comp/bangalore/b7/080pxx80.xx80.181127221440.w1b7/catalogue/iocl-bangalore-guest-house-richmond-road-bangalore-guest-house-6ox3lg9637.jpg",
+    "https://images.jdmagicbox.com/comp/delhi/j6/011pxx11.xx11.210102161255.s4j6/catalogue/hotel-ratiram-palace-noida-sector-18-noida-guest-house-1eq85eu1li.jpg",
+    "https://content.jdmagicbox.com/comp/chennai/70/044p3038570/catalogue/ioc-guest-house-nungambakkam-chennai-guest-house-lqn88l-250.jpg",
   ];
-  
   return (
     <div className="pList">
       {loading ? (
@@ -28,7 +26,7 @@ const PropertyList = () => {
                 />
                 <div className="pListTitles">
                   <h1>{data[i]?.type}</h1>
-                  <h2>{data[i]?.count} {data[i]?.type}</h2>
+                  <h2>{data[i]?.count} - {data[i]?.type} Rooms</h2>
                 </div>
               </div>
             ))}

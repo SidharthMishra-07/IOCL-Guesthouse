@@ -55,20 +55,19 @@ const Header = ({ type }) => {
         }
       >
         <div className="headerList">
-          <div className="headerListItem active">
+          <div className="headerListItem headerBtn">
             <FontAwesomeIcon icon={faBed} />
             <span>Stays</span>
           </div>
         </div>
         {type !== "list" && (
           <>
-            {/* <h1 className="headerTitle">
-              A lifetime of discounts? It's Genius.
+            <h1 className="headerTitle">
+              A One place stop for all you staying needs.
             </h1>
-            <p className="headerDesc">
-              Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free Lamabooking account
-            </p> */}
+            <h2 className="headerDesc">
+              Stay easy with Indian Oil's Exclusive Guesthouse Hub
+            </h2>
             <button className="headerBtn">Sign in / Register</button>
             <div className="headerSearch">
               <div className="headerSearchItem">

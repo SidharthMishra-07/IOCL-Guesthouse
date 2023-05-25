@@ -3,7 +3,7 @@ import "./featured.css";
 
 const Featured = () => {
   const {data, loading, error} = useFetch(
-    "/guesthouse/countByCity?cities=delhi,chennai,mumbai,vadodara,panipat,guwahati,paradip,bhubaneshwar,hyderabad,bangalore,pune,gwalior"
+    "/guesthouse/countByCity?cities=delhi,chennai,mumbai,vadodara,panipat,guwahati,paradip,bhubaneshwar,hyderabad,bangalore,pune,gwalior,noida"
   );
   console.log(data);
 

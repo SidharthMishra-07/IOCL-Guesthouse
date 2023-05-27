@@ -9,16 +9,17 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./header.css";
 import { DateRange } from "react-date-range";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -43,8 +44,18 @@ const Header = ({ type }) => {
     });
   };
 
+  const {dispatch} = useContext(SearchContext);
+
   const handleSearch = () => {
-    navigate("/guesthouse", { state: { destination, date, options } });
+    dispatch({  
+      type: "SET_SEARCH",
+      payload: {
+        destination,
+        dates,
+        options,
+      },
+    });
+    navigate("/guesthouse", { state: { destination, dates, options } });
   };
 
   return (
@@ -84,16 +95,16 @@ const Header = ({ type }) => {
                 <span
                   onClick={() => setOpenDate(!openDate)}
                   className="headerSearchText"
-                >{`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(
-                  date[0].endDate,
+                >{`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(
+                  dates[0].endDate,
                   "dd/MM/yyyy"
                 )}`}</span>
                 {openDate && (
                   <DateRange
                     editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
+                    onChange={(item) => setDates([item.selection])}
                     moveRangeOnFirstSelection={false}
-                    ranges={date}
+                    ranges={dates}
                     className="date"
                     minDate={new Date()}
                   />

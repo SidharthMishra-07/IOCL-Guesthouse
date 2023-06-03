@@ -1,6 +1,8 @@
 .login {
     height: 100vh;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
   }
@@ -40,4 +42,10 @@
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
+  }
+
+  @media screen and (max-width: 400px){
+    img{
+      display: none;
+    }
   }

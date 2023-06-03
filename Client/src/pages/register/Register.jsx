@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import mascot from "../../asset/mascot.png";
 import "./register.css";
 
 const Register = () => {
@@ -56,7 +57,14 @@ const Register = () => {
         >
           Register
         </button>
+        
+        <div className="isreg">
+          Already Registered? &nbsp;<a href="/login">Login</a>
+        </div>
         {error && <span>{error.message}</span>}
+      </div>
+      <div className="imgDiv">
+        <img src={mascot} alt="mascot" className="rImg" />
       </div>
     </div>
   );

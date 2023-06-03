@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import mascot from "../../asset/mascot.png";
 import "./login.css";
 
 const Login = () => {
@@ -33,6 +34,9 @@ const Login = () => {
 
   return (
     <div className="login">
+      <div className="imgDiv">
+        <img src={mascot} alt="mascot" className="lImg" />
+      </div>
       <div className="lContainer">
         <input type="number" placeholder="Employee Number" id="username" onChange={handleChange} className="lInput"/>
         <input type="password" placeholder="Password" id="password" onChange={handleChange} className="lInput"/>

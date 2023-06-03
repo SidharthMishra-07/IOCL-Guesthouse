@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 import "./login.css";
 
 const Login = () => {
@@ -30,7 +31,6 @@ const Login = () => {
     }
   };
 
-
   return (
     <div className="login">
       <div className="lContainer">
@@ -39,6 +39,9 @@ const Login = () => {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
+        <Link to="/register">
+          <button className="lRegisterButton">Register</button>
+        </Link>
         {error && <span>{error.message}</span>}
       </div>
     </div>

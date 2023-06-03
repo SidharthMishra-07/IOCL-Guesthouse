@@ -6,7 +6,11 @@ import { useContext } from "react"
 
 const Navbar = () => {
   const {user} = useContext(AuthContext)
-
+  // const [isLoggedin, setIsLoggedin] = useState(false);
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    window.location.href = '/';
+  };
   return (
     <div className="navbar">
       <div className="navContainer">
@@ -17,11 +21,13 @@ const Navbar = () => {
         {user ? (
           <div className="navItems">
             {user.email}
-            <button className="navButton">Logout</button>
+            <button className="navButton" onClick={handleLogout}>Logout</button>
           </div>
           ) : (
           <div className="navItems">
+            <Link to = "/register">
             <button className="navButton">Register</button>
+            </Link>
             <Link to = "/login">
               <button className="navButton">Login</button>
             </Link>

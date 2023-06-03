@@ -1,22 +1,22 @@
-.login {
+.register {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
-  .lContainer {
+  .rContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
   
-  .lInput{
+  .rInput{
     height: 30px;
     padding: 10px;
   }
   
-  .lButton {
+  .rButton {
     border: none;
     padding: 10px 20px;
     background-color: #f37022;
@@ -26,18 +26,7 @@
     border-radius: 5px;
   }
   
-  .lButton:disabled{
+  .rButton:disabled{
     background-color: #03174f;
     cursor: not-allowed;
-  }
-
-  .lRegisterButton{
-    border: none;
-    padding: 10px 20px;
-    width: 100%;
-    background-color: #03174f;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
   }

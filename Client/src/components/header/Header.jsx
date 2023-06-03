@@ -15,6 +15,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
+import { Link } from "react-router-dom";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -79,7 +80,9 @@ const Header = ({ type }) => {
             <h2 className="headerDesc">
               Stay easy with Indian Oil's Exclusive Guesthouse Hub
             </h2>
-            <button className="headerBtn">Sign in / Register</button>
+            <Link to="/login">
+              <button className="headerBtn">Sign in / Register</button>
+            </Link>
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />

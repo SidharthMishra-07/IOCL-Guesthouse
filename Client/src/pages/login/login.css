@@ -43,7 +43,26 @@
     cursor: pointer;
     border-radius: 5px;
   }
-
+  .loginNav{
+    height: 80px;
+    /* background-color: #003580; */
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin: 0px 20px;
+  }
+  
+  .navContainer{
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navContainer img{
+    margin-top: 20px;
+  }
+  
   @media screen and (max-width: 400px){
     img{
       display: none;

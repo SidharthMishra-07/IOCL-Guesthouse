@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import mascot from "../../asset/mascot.png";
+import logo from "../../asset/logo.gif";
 import "./login.css";
 
 const Login = () => {
@@ -33,24 +34,32 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <div className="imgDiv">
-        <img src={mascot} alt="mascot" className="lImg" />
+    <>
+      <div className="loginNav">
+        <div className="navContainer">
+          <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+            <img src={logo} alt="Logo" width={250} height={100}/>
+          </Link>
+        </div>
       </div>
-      <div className="lContainer">
-        <input type="number" placeholder="Employee Number" id="username" onChange={handleChange} className="lInput"/>
-        <input type="password" placeholder="Password" id="password" onChange={handleChange} className="lInput"/>
-        <button disabled={loading} onClick={handleClick} className="lButton">
-          Login
-        </button>
-        <Link to="/register">
-          <button className="lRegisterButton">Register</button>
-        </Link>
-        {error && <span>{error.message}</span>}
+      <div className="login">
+        <div className="imgDiv">
+          <img src={mascot} alt="mascot" className="lImg" />
+        </div>
+        <div className="lContainer">
+          <input type="number" placeholder="Employee Number" id="username" onChange={handleChange} className="lInput" />
+          <input type="password" placeholder="Password" id="password" onChange={handleChange} className="lInput" />
+          <button disabled={loading} onClick={handleClick} className="lButton">
+            Login
+          </button>
+          <div className="isreg">
+            Not Yet Registered? &nbsp;<a href="/register">Register</a>
+          </div>
+          {error && <span>{error.message}</span>}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
 export default Login;
-    

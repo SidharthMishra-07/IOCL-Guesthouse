@@ -6,11 +6,10 @@ import { AuthContext } from "../../context/AuthContext";
 import { useContext, useState } from "react";
 import Reserve from "../reserve/Reserve";
 
-const SearchItem = ({item}) => {
+const SearchItem = ({item, startDate, endDate}) => {
   const id = item._id;
   const [openModal, setOpenModal] = useState(false);
-
-  // const { data, loading, error } = useFetch(`/hotels/find/${id}`);
+  
   const {user} = useContext(AuthContext)
   const navigate = useNavigate();
 
@@ -23,7 +22,6 @@ const SearchItem = ({item}) => {
     }
   }
 
-  console.log(id);
   return (
     <div className="searchItem">
       <img src={item.photos[0]} alt="" className="siImg" />
@@ -51,7 +49,7 @@ const SearchItem = ({item}) => {
           {/* </Link> */}
         </div>
       </div>
-      {openModal && <Reserve setOpen={setOpenModal} guesthouseId={id}/>}
+      {openModal && <Reserve setOpen={setOpenModal} guesthouseId={id} startDate={startDate} endDate={endDate}/>}
     </div>
   );
 };

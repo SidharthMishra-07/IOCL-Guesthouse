@@ -22,6 +22,10 @@ const List = () => {
     reFetch();
   };
 
+  const startDate = format(dates[0].startDate, "MM/dd/yyyy");
+  const endDate = format(dates[0].endDate, "MM/dd/yyyy");
+  // console.log(startDate, endDate);
+
   return (
     <div>
       <Navbar />
@@ -40,8 +44,8 @@ const List = () => {
               <label>Check-in Date</label>
               <span onClick={() => setOpenDate(!openDate)}>{`${format(
                 dates[0].startDate,
-                "dd/MM/yyyy"
-              )} to ${format(dates[0].endDate, "dd/MM/yyyy")}`}</span>
+                "MM/dd/yyyy"
+              )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
               {openDate && (
                 <DateRange
                   onChange={(item) => setDates([item.selection])}
@@ -104,7 +108,7 @@ const List = () => {
               ) : (
                 <>
                   {data.map((item) => (
-                    <SearchItem item={item} key={item._id} />
+                    <SearchItem item={item} key={item._id} startDate={startDate} endDate={endDate}/>
                   ))}
                 </>
               )}

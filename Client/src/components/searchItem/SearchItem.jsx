@@ -1,7 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./searchItem.css";
+import useFetch from "../../hooks/useFetch";
+import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext, useState } from "react";
+import Reserve from "../reserve/Reserve";
 
 const SearchItem = ({item}) => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [openModal, setOpenModal] = useState(false);
+
+  // const { data, loading, error } = useFetch(`/hotels/find/${id}`);
+  const {user} = useContext(AuthContext)
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if(user){
+      setOpenModal(true);
+    }
+    else{
+      navigate("/login")
+    }
+  }
   return (
     <div className="searchItem">
       <img src={item.photos[0]} alt="" className="siImg" />
@@ -24,11 +45,12 @@ const SearchItem = ({item}) => {
           <button>{item.rating}</button>
         </div>}
         <div className="siDetailTexts">
-          <Link to={`/guesthouse/${item._id}`}>
-          <button className="siCheckButton">See availability</button>
-          </Link>
+          {/* <Link to={`/guesthouse/${item._id}`}> */}
+          <button className="siCheckButton" onClick={handleClick}>See availability</button>
+          {/* </Link> */}
         </div>
       </div>
+      {openModal && <Reserve setOpen={setOpenModal} guesthouseId={id}/>}
     </div>
   );
 };

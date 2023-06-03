@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./searchItem.css";
 import useFetch from "../../hooks/useFetch";
 import { SearchContext } from "../../context/SearchContext";
@@ -7,8 +7,7 @@ import { useContext, useState } from "react";
 import Reserve from "../reserve/Reserve";
 
 const SearchItem = ({item}) => {
-  const location = useLocation();
-  const id = location.pathname.split("/")[2];
+  const id = item._id;
   const [openModal, setOpenModal] = useState(false);
 
   // const { data, loading, error } = useFetch(`/hotels/find/${id}`);
@@ -23,6 +22,8 @@ const SearchItem = ({item}) => {
       navigate("/login")
     }
   }
+
+  console.log(id);
   return (
     <div className="searchItem">
       <img src={item.photos[0]} alt="" className="siImg" />

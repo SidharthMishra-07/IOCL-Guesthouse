@@ -32,7 +32,9 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <input placeholder={destination} type="text" onChange={
+                (e) => setDestination(e.target.value  || destination)
+               }/>
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -51,7 +53,7 @@ const List = () => {
             <div className="lsItem">
               <label>Options</label>
               <div className="lsOptions">
-                <div className="lsOptionItem">
+                {/* <div className="lsOptionItem">
                   <span className="lsOptionText">
                     Min price <small>per night</small>
                   </span>
@@ -62,7 +64,7 @@ const List = () => {
                     Max price <small>per night</small>
                   </span>
                   <input type="number" className="lsOptionInput" />
-                </div>
+                </div> */}
                 <div className="lsOptionItem">
                   <span className="lsOptionText">Adult</span>
                   <input

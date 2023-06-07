@@ -5,13 +5,13 @@
   background-color: white;
 
   .top {
-    height: 50px;
+    height: 100px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 
     .logo {
-      font-size: 20px;
       font-weight: bold;
       color: #6439ff;
     }
@@ -50,7 +50,7 @@
 
         .icon {
           font-size: 18px;
-          color: #7451f8;
+          color: #f37022;
         }
 
         span{

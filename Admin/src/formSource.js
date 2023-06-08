@@ -23,16 +23,16 @@ export const userInputs = [
     type: "password",
   },
   {
-    id: "country",
-    label: "Country",
+    id: "grade",
+    label: "Grade",
     type: "text",
-    placeholder: "USA",
+    placeholder: "A",
   },
   {
     id: "city",
     label: "City",
     type: "text",
-    placeholder: "USA",
+    placeholder: "New Delhi",
   },
 ];
 
@@ -80,7 +80,7 @@ export const guesthouseInputs = [
     id: "type",
     label: "Type",
     type: "text",
-    placeholder: "guesthouse",
+    placeholder: "1Bed, 2Bed, Executive, Suite",
   },
   {
     id: "city",

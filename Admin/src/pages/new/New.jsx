@@ -32,8 +32,10 @@ const New = ({ inputs, title }) => {
       };
 
       await axios.post("/auth/register", newUser);
+      alert("User added successfully");
     } catch (err) {
       console.log(err);
+      alert("User could not be added");
     }
   };
 

@@ -27,7 +27,6 @@ const NewRoom = () => {
       alert("Room added successfully"); 
     } catch (err) {
       console.log(err);
-      alert("Room could not be added");
     }
   };
 

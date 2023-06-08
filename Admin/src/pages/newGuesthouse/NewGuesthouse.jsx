@@ -56,7 +56,6 @@ const NewGuesthouse = () => {
             alert("Guesthouse added successfully"); 
         } catch (err) { 
             console.log(err)
-            alert("Guesthouse could not be added"); 
         }
     };
     return (

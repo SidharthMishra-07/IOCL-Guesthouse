@@ -35,7 +35,6 @@ const New = ({ inputs, title }) => {
       alert("User added successfully");
     } catch (err) {
       console.log(err);
-      alert("User could not be added");
     }
   };
 

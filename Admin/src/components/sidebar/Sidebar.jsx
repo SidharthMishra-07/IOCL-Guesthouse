@@ -4,12 +4,9 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
-import InsertChartIcon from "@mui/icons-material/InsertChart";
-import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
+import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
+import KingBedIcon from '@mui/icons-material/KingBed';
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
@@ -18,6 +15,10 @@ import logo from "../../asset/logo.gif"
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    window.location.href = '/';
+  };
   return (
     <div className="sidebar">
       <div className="top">
@@ -44,31 +45,22 @@ const Sidebar = () => {
           </Link>
           <Link to="/guesthouse" style={{ textDecoration: "none" }}>
             <li>
-              <StoreIcon className="icon" />
+              <HolidayVillageIcon className="icon" />
               <span>Guesthouses</span>
             </li>
           </Link>
           <Link to="/rooms" style={{ textDecoration: "none" }}>
             <li>
-              <StoreIcon className="icon" />
+              <KingBedIcon className="icon" />
               <span>Rooms</span>
             </li>
           </Link>
-          <p className="title">USEFUL</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>Stats</span>
-          </li>
-          <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
-          </li>
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
-          <li>
+          <li onClick={handleLogout}>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
           </li>

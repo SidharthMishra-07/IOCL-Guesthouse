@@ -9,8 +9,12 @@ import "./register.css";
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
-    username: undefined,
-    password: undefined,
+    username: '',
+    email: '',
+    password: '',
+    grade: '',
+    city: '',
+    phone: '',
   });
 
   const { loading, error, dispatch } = useContext(AuthContext);
@@ -27,7 +31,7 @@ const Register = () => {
     try {
       const res = await axios.post("/auth/register", credentials);
       dispatch({ type: "REGISTER_SUCCESS", payload: res.data.details });
-      navigate("/register");
+      navigate("/login");
     } catch (err) {
       dispatch({ type: "REGISTER_FAILURE", payload: err.response.data });
     }
@@ -44,10 +48,18 @@ const Register = () => {
       </div>
       <div className="register">
         <div className="rContainer">
-          <input type="number" placeholder="Employee Number" id="username" value={credentials.username} onChange={handleChange}className="rInput"/>
-          <input type ="email" placeholder="Email" id="email" value={credentials.email} onChange={handleChange} className="rInput" />
-          <input type="password" placeholder="Password" id="password" value={credentials.password} onChange={handleChange} className="rInput"/>
-
+          <div className="rdiv">
+            <div className="rContainerSub1">
+              <input type="text" placeholder="Employee Number" id="username" value={credentials.username} onChange={handleChange} className="rInput" required/>
+              <input type="email" placeholder="Email" id="email" value={credentials.email} onChange={handleChange} className="rInput" required/>
+              <input type="password" placeholder="Password" id="password" value={credentials.password} onChange={handleChange} className="rInput" required/>
+            </div>
+            <div className="rContainerSub2">
+              <input type="text" placeholder="Grade" id="grade" value={credentials.grade} onChange={handleChange} className="rInput" required/>
+              <input type="text" placeholder="City" id="city" value={credentials.city} onChange={handleChange} className="rInput" required/>
+              <input type="text" placeholder="Phone" id="phone" value={credentials.phone} onChange={handleChange} className="rInput" required/>
+            </div>
+          </div>
           <button disabled={loading} onClick={handleRegister} className="rButton">
             Register
           </button>
@@ -58,11 +70,11 @@ const Register = () => {
 
           {error && <span>{error.message}</span>}
         </div>
-        
+
         <div className="imgDiv">
           <img src={mascot} alt="mascot" className="rImg" />
         </div>
-      </div>
+      </div >
     </>
   );
 };

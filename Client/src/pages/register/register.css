@@ -10,6 +10,16 @@
     flex-direction: column;
     gap: 10px;
   }
+  .rContainerSub1, .rContainerSub2{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .rdiv{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
   
   .rInput{
     height: 30px;

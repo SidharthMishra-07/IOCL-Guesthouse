@@ -53,7 +53,11 @@ const NewGuesthouse = () => {
             };
 
             await axios.post("/guesthouse", newguesthouse);
-        } catch (err) { console.log(err) }
+            alert("Guesthouse added successfully"); 
+        } catch (err) { 
+            console.log(err)
+            alert("Guesthouse could not be added"); 
+        }
     };
     return (
         <div className="new">

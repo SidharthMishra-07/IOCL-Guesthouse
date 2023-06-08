@@ -11,6 +11,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 import { guesthouseColumns, roomColumns, userColumns } from "./datatablesource";
 import NewGuesthouse from "./pages/newGuesthouse/NewGuesthouse";
+import NewRoom from "./pages/newRoom/NewRoom";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -97,7 +98,7 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={productInputs} title="Add New Room" />
+                    <NewRoom />
                   </ProtectedRoute>
                 }
               />

@@ -1,22 +1,19 @@
 import "./widget.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
+import KingBedIcon from '@mui/icons-material/KingBed';
+import { Link } from "react-router-dom";
 
 const Widget = ({ type }) => {
   let data;
-
-  //temporary
-  const amount = 100;
   const diff = 20;
 
   switch (type) {
-    case "user":
+    case "users":
       data = {
         title: "USERS",
-        isMoney: false,
+        amount: 100,
         link: "See all users",
         icon: (
           <PersonOutlinedIcon
@@ -29,13 +26,13 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "order":
+    case "guesthouse":
       data = {
-        title: "ORDERS",
-        isMoney: false,
-        link: "View all orders",
+        title: "GUESTHOUSES",
+        amount: 50,
+        link: "View all guesthouses",
         icon: (
-          <ShoppingCartOutlinedIcon
+          <HolidayVillageIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
@@ -45,31 +42,15 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "earning":
+    case "rooms":
       data = {
-        title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
+        title: "ROOMS",
+        amount: 100,
+        link: "View all rooms",
         icon: (
-          <MonetizationOnOutlinedIcon
+          <KingBedIcon
             className="icon"
             style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
-          />
-        ),
-      };
-      break;
-    case "balance":
-      data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
-        icon: (
-          <AccountBalanceWalletOutlinedIcon
-            className="icon"
-            style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
-            }}
           />
         ),
       };
@@ -80,17 +61,19 @@ const Widget = ({ type }) => {
 
   return (
     <div className="widget">
+      <Link to={`/${type}`} style={{ textDecoration: "none" }}>
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+          {data.isMoney && "$"} {data.amount}
         </span>
         <span className="link">{data.link}</span>
       </div>
+      </Link>
       <div className="right">
         <div className="percentage positive">
-          <KeyboardArrowUpIcon />
-          {diff} %
+          {/* <KeyboardArrowUpIcon />
+          {diff} % */}
         </div>
         {data.icon}
       </div>

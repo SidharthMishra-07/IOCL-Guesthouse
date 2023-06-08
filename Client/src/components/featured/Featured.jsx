@@ -1,4 +1,5 @@
 import useFetch from "../../hooks/useFetch";
+import Spinner from "../../components/loading/Spinner";
 import "./featured.css";
 
 const Featured = () => {
@@ -10,7 +11,9 @@ const Featured = () => {
   return (
     <div className="featured">
       {loading ? (
-        "Loading please wait"
+        <div className="center">
+          <Spinner/>
+        </div>
       ) : (
         <>
           <div className="featuredItem">

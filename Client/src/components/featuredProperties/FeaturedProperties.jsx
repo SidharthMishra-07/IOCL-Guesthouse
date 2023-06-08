@@ -1,5 +1,6 @@
 import "./featuredProperties.css";
 import useFetch from "../../hooks/useFetch";
+import Spinner from "../loading/Spinner";
 
 const FeaturedProperties = () => {
   const { data, loading, error } = useFetch("/guesthouse?featured=true");
@@ -7,7 +8,9 @@ const FeaturedProperties = () => {
   return (
       <div className="fp">
         {loading ? (
-          "Loading"
+          <div className="center">
+            <Spinner/>
+          </div>
         ) : (
           <>
             {data.map((item) => (
